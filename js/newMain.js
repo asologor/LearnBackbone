@@ -9,28 +9,28 @@ function main(){
     var people = [
         {
             name: 'Вася',
-            lastName: 'Залупупкин',
-            gender: 'Мужиг',
+            lastName: 'Петров',
+            gender: 'male',
             age: 52
         },
         {
             name: 'Алёша',
             lastName: 'Адекватный',
-            gender: 'Мужиг',
+            gender: 'male',
             age: 13
         },
         {
             name: 'Алёна',
-            lastName: 'Жопова',
-            gender: 'Баба',
+            lastName: 'Глушко',
+            gender: 'female',
             age: 124
         }
     ];
 
     var usersCollection = new UsersCollection(people);
     var usersView = new UsersView({collection: usersCollection});
-    usersView.render();
-    $("body").append(usersView.el);
+
+    $("body").append(usersView.render().el);
 }
 
 $(main);

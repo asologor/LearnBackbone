@@ -12,8 +12,7 @@ var UsersView = Backbone.View.extend({
         this.collection.each(function(user){
             var userView = new View({model: user});
             this.$el.append(userView.render().el);
-
-            return this;
         }, this);
+        return this;
     }
 });
