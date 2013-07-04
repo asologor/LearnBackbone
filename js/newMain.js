@@ -11,26 +11,31 @@ function main(){
             name: 'Вася',
             lastName: 'Петров',
             gender: 'male',
-            age: 52
+            age: 52,
+            phoneNumber: '05021'
         },
         {
             name: 'Алёша',
             lastName: 'Адекватный',
             gender: 'male',
-            age: 13
+            age: 13,
+            phoneNumber: '05132'
         },
         {
             name: 'Алёна',
             lastName: 'Глушко',
             gender: 'female',
-            age: 124
+            age: 124,
+            phoneNumber: '05384'
         }
     ];
 
     var usersCollection = new UsersCollection(people);
     var usersView = new UsersView({collection: usersCollection});
 
-    $("body").append(usersView.render().el);
+    $("#users").append(usersView.render().el);
+
+
 }
 
 $(main);
