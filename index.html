@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/UsersCollection.js"></script>
     <script type="text/javascript" src="js/View.js"></script>
     <script type="text/javascript" src="js/UsersView.js"></script>
+    <script type="text/javascript" src="js/InfoView.js"></script>
     <script type="text/javascript" src="js/newMain.js"></script>
 </head>
 <body>
@@ -19,8 +20,30 @@
 <div id="users">
 </div>
 
+<div id="information">
+</div>
+
 <script type="text/template" id="user">
     <strong><%= name %> <%= lastName %></strong> - <%= gender %>, <%= age %> years old
+</script>
+
+<script type="text/template" id="infoTempl">
+    <li>
+        Name: <%= name %>
+    </li>
+    <li>
+        Last Name: <%= lastName %>
+    </li>
+    <li>
+        Gender: <%= gender %>
+    </li>
+    <li>
+        Age: <%= age %>
+    </li>
+    <li>
+        Phone Number: <%= phoneNumber %>
+    </li>
+    <a href='#' id='close'>close</a>
 </script>
 
 </body>

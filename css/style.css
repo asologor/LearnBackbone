@@ -1,4 +1,24 @@
-body
-{
-    font-size: 16pt
+body {
+    font-size: 16pt;
+}
+
+#information ul{
+    position: absolute;
+    left: 610px;
+    top: 0px;
+    width: 400px;
+    border: 1px solid black;
+}
+
+.item:hover {
+    background-color: red;
+}
+
+#users {
+    width: 600px;
+    padding: 0px;
+}
+
+.selected {
+    background-color: lawngreen;
 }
