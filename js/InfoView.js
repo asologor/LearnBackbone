@@ -2,24 +2,20 @@
  * Created with JetBrains WebStorm.
  * User: Андрей
  * Date: 04.07.13
- * Time: 13:37
+ * Time: 15:24
  * To change this template use File | Settings | File Templates.
  */
-var View = Backbone.View.extend({
-    tagName: 'li',
-    className: 'item',
-
-    template: '#user',
+var InfoView = Backbone.View.extend({
+    tagName: 'ul',
+    template: '#infoTempl',
 
     events: {
-        'click': 'clicked'
+        'click #close': 'close'
     },
 
-    clicked: function(){
+    close: function(){
         $(".selected").removeClass('selected');
-        this.$el.addClass('selected');
-        var infoView = new InfoView({model: this.model});
-        $('#information').html(infoView.render().el);
+        $('#information').empty();
     },
 
     render: function(){
