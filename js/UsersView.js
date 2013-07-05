@@ -8,6 +8,14 @@
 var UsersView = Backbone.View.extend({
     tagName: 'ol',
 
+    initialize: function(){
+        this.listenTo(this.collection, 'click', this.clicked);
+    },
+
+    clicked: function(){
+        this.$('.selected').removeClass('selected');
+    },
+
     render: function(){
         this.collection.each(function(user){
             var userView = new View({model: user});
