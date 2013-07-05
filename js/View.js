@@ -15,16 +15,19 @@ var View = Backbone.View.extend({
         'click': 'clicked'
     },
 
+    initialize: function(){
+        this.template = _.template( $(this.template).html() );
+    },
+
     clicked: function(){
-        $(".selected").removeClass('selected');
+        this.model.trigger('click');
         this.$el.addClass('selected');
         var infoView = new InfoView({model: this.model});
         $('#information').html(infoView.render().el);
     },
 
     render: function(){
-        var template = _.template( $(this.template).html() );
-        this.$el.html( template(this.model.toJSON()) );
+        this.$el.html( this.template(this.model.toJSON()) );
 
         return this;
     }

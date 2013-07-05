@@ -14,8 +14,8 @@ var InfoView = Backbone.View.extend({
     },
 
     close: function(){
-        $(".selected").removeClass('selected');
-        $('#information').empty();
+        this.model.trigger('click');
+        this.remove();
     },
 
     render: function(){
