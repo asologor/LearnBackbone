@@ -22,7 +22,7 @@ var View = Backbone.View.extend({
     clicked: function(){
         this.model.trigger('click');
         this.$el.addClass('selected');
-        var infoView = new InfoView({model: this.model, parentView: this});
+        var infoView = new InfoView({model: this.model});
         $('#information').html(infoView.render().el);
     },
 
