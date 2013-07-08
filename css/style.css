@@ -6,8 +6,20 @@ body {
     position: absolute;
     left: 610px;
     top: 0px;
-    width: 400px;
+    width: 320px;
     border: 1px solid black;
+}
+
+ul span {
+    position: absolute;
+    left: 360px;
+    font-size: 12pt;
+    color: red;
+}
+
+#information input[type='text'], select {
+    position: absolute;
+    left: 200px;
 }
 
 .item:hover {

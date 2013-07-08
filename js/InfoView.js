@@ -10,11 +10,18 @@ var InfoView = Backbone.View.extend({
     template: '#infoTempl',
 
     events: {
-        'click #close': 'close'
+        'click #close': 'close',
+        'click #edit': 'edit'
     },
 
     close: function(){
-        this.model.trigger('click');
+        this.model.trigger('itemClicked');
+        this.remove();
+    },
+
+    edit: function(){
+        var editView = new EditView({model: this.model});
+        $('#information').html(editView.render().el);
         this.remove();
     },
 
