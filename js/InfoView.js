@@ -8,6 +8,7 @@
 var InfoView = Backbone.View.extend({
     tagName: 'ul',
     template: '#infoTempl',
+    className: 'info',
 
     events: {
         'click #close': 'close',

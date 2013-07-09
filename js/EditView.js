@@ -23,14 +23,12 @@ var EditView = Backbone.View.extend({
         this.mod.gender = this.$('#gender').val();
         this.mod.age = this.$('#age').val();
         this.mod.phoneNumber = this.$('#phoneNumber').val();
-        this.model.set(this.mod, {validate: true});
         if( this.model.set(this.mod, {validate: true}) ){
-            $('#information ul').width('320px');
-            this.model.set(this.mod, {validate: true});
+            this.$('ul').removeClass('editError');
             this.model.trigger('saveClicked');
             this.remove();
         }else{
-            $('#information ul').width('500px');
+            this.$('ul').addClass('editError');
             var errors = this.model.validationError;
             this.$('span').empty();
             for(var el in errors){
@@ -50,4 +48,4 @@ var EditView = Backbone.View.extend({
 
         return this;
     }
-})
+});

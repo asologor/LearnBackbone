@@ -2,11 +2,27 @@ body {
     font-size: 16pt;
 }
 
-#information ul{
+#users {
+    position: absolute;
+    width: 600px;
+    padding: 0px;
+}
+
+#information {
     position: absolute;
     left: 610px;
-    top: 0px;
+}
+
+
+.edit, .info {
+    position: absolute;
     width: 320px;
+    border: 1px solid black;
+}
+
+.editError {
+    position: absolute;
+    width: 500px;
     border: 1px solid black;
 }
 
@@ -24,11 +40,6 @@ ul span {
 
 .item:hover {
     background-color: red;
-}
-
-#users {
-    width: 600px;
-    padding: 0px;
 }
 
 .selected {
