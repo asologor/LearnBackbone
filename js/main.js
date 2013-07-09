@@ -17,8 +17,8 @@ require.config({
     }
 });
 
-require([ 'jquery', 'UsersCollection', 'UsersView'], function($, UsersCollection, UsersView){
-    var people = [
+require([ 'jquery', 'UsersCollection', 'UsersView', 'Router'], function($, UsersCollection, UsersView, Router){
+    var users = [
         {
             name: 'Вася',
             lastName: 'Петров',
@@ -42,7 +42,5 @@ require([ 'jquery', 'UsersCollection', 'UsersView'], function($, UsersCollection
         }
     ];
 
-    var usersCollection = new UsersCollection(people);
-    var usersView = new UsersView({collection: usersCollection});
-    $("#users").append(usersView.render().el);
+    new Router(users);
 });

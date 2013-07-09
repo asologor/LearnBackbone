@@ -22,9 +22,7 @@ define( [ 'jquery', 'backbone', 'underscore', 'EditView' ], function($, Backbone
         },
 
         edit: function(){
-            var editView = new EditView({model: this.model});
-            $('#information').html(editView.render().el);
-            this.remove();
+            this.model.trigger('editClicked', this.model);
         },
 
         render: function(){

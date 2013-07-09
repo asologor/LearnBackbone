@@ -18,13 +18,17 @@ define( [ 'jquery', 'backbone', 'underscore', 'InfoView' ], function($, Backbone
 
         initialize: function(){
             this.template = _.template( $(this.template).html() );
+            this.model.on('change', this.repaint, this);
+        },
+
+        repaint: function(){
+            this.$el.removeClass('selected');
+            this.render();
         },
 
         clicked: function(){
-            this.model.trigger('itemClicked');
+            this.model.trigger('itemClicked', this.model);
             this.$el.addClass('selected');
-            var infoView = new InfoView({model: this.model});
-            $('#information').html(infoView.render().el);
         },
 
         render: function(){
