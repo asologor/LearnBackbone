@@ -9,11 +9,17 @@ var UsersView = Backbone.View.extend({
     tagName: 'ol',
 
     initialize: function(){
-        this.listenTo(this.collection, 'click', this.clicked);
+        this.listenTo(this.collection, 'itemClicked', this.itemClicked);
+        this.listenTo(this.collection, 'saveClicked', this.repaint);
     },
 
-    clicked: function(){
+    itemClicked: function(){
         this.$('.selected').removeClass('selected');
+    },
+
+    repaint: function(){
+        this.$el.empty();
+        this.render();
     },
 
     render: function(){
