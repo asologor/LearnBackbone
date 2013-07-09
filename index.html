@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/View.js"></script>
     <script type="text/javascript" src="js/UsersView.js"></script>
     <script type="text/javascript" src="js/InfoView.js"></script>
+    <script type="text/javascript" src="js/EditView.js"></script>
     <script type="text/javascript" src="js/newMain.js"></script>
 </head>
 <body>
@@ -43,7 +44,34 @@
     <li>
         Phone Number: <%= phoneNumber %>
     </li>
+    <a href="#" id='edit'>Edit</a>
     <a href='#' id='close'>close</a>
+</script>
+
+<script type="text/template" id="editInfo">
+    <ul class="edit">
+        <li>
+            Name: <input type="text" id="name"> <span id="nameSpan"></span>
+        </li>
+        <li>
+            Last Name: <input type="text" id="lastName"> <span id="lastNameSpan"></span>
+        </li>
+        <li>
+            Gender:
+            <select size='1' id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select> <span id="genderSpan"></span>
+        </li>
+        <li>
+            Age: <input type="text" id="age"> <span id="ageSpan"></span>
+        </li>
+        <li>
+            Phone Number: <input type="text" id="phoneNumber"> <span id="phoneNumberSpan"></span>
+        </li>
+        <input type="button" value="Save" id="saveButton">
+        <input type="button" value="Close" id="closeButton">
+    </ul>
 </script>
 
 </body>

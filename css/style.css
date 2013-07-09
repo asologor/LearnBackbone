@@ -2,21 +2,44 @@ body {
     font-size: 16pt;
 }
 
-#information ul{
+#users {
+    position: absolute;
+    width: 600px;
+    padding: 0px;
+}
+
+#information {
     position: absolute;
     left: 610px;
-    top: 0px;
-    width: 400px;
+}
+
+
+.edit, .info {
+    position: absolute;
+    width: 320px;
     border: 1px solid black;
+}
+
+.editError {
+    position: absolute;
+    width: 500px;
+    border: 1px solid black;
+}
+
+ul span {
+    position: absolute;
+    left: 360px;
+    font-size: 12pt;
+    color: red;
+}
+
+#information input[type='text'], select {
+    position: absolute;
+    left: 200px;
 }
 
 .item:hover {
     background-color: red;
-}
-
-#users {
-    width: 600px;
-    padding: 0px;
 }
 
 .selected {
