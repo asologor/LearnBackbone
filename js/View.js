@@ -1,34 +1,35 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Андрей
- * Date: 04.07.13
- * Time: 13:37
- * To change this template use File | Settings | File Templates.
- */
-var View = Backbone.View.extend({
-    tagName: 'li',
-    className: 'item',
+define( [ 'jquery', 'backbone', 'underscore' ], function($, Backbone, _){
+    var View = Backbone.View.extend({
+        tagName: 'li',
+        className: 'item',
 
-    template: '#user',
+        template: _.template( $('#user').html() ),
 
-    events: {
-        'click': 'clicked'
-    },
+        events: {
+            'click': 'clicked'
+        },
 
-    initialize: function(){
-        this.template = _.template( $(this.template).html() );
-    },
+        initialize: function(){
+            this.html = this.template(this.model.toJSON());
+            this.model.on('change', this.repaint, this);
+        },
 
-    clicked: function(){
-        this.model.trigger('itemClicked');
-        this.$el.addClass('selected');
-        var infoView = new InfoView({model: this.model});
-        $('#information').html(infoView.render().el);
-    },
+        repaint: function(){
+            this.$el.removeClass('selected');
+            this.render();
+        },
 
-    render: function(){
-        this.$el.html( this.template(this.model.toJSON()) );
+        clicked: function(){
+            this.model.trigger('itemClicked', this.model);
+            this.$el.addClass('selected');
+        },
 
-        return this;
-    }
+        render: function(){
+            this.$el.html( this.template(this.model.toJSON()) );
+
+            return this;
+        }
+    });
+
+    return View;
 });
