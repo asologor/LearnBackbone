@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Андрей
- * Date: 08.07.13
- * Time: 17:26
- * To change this template use File | Settings | File Templates.
- */
 require.config({
     shim: {
         'backbone' : {
@@ -17,7 +10,7 @@ require.config({
     }
 });
 
-require([ 'jquery', 'UsersCollection', 'UsersView', 'Router'], function($, UsersCollection, UsersView, Router){
+require(['Router'], function(Router){
     var users = [
         {
             name: 'Вася',

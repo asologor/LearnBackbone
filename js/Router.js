@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Андрей
- * Date: 09.07.13
- * Time: 16:31
- * To change this template use File | Settings | File Templates.
- */
 define( ['jquery', 'backbone', 'underscore',
     'UsersCollection', 'UsersView', 'InfoView', 'EditView'], function($, Backbone, _, UsersCollection, UsersView, InfoView, EditView){
     var Router = Backbone.Router.extend({
@@ -31,7 +24,7 @@ define( ['jquery', 'backbone', 'underscore',
         },
 
         itemClicked: function(model){
-            this.Views.usersView.$('.selected').removeClass('selected');
+            this.Views.usersView.deselect();
             if( model ){
                 var modelId = this.usersCollection.indexOf(model);
                 this.navigate('info/' + modelId, true);

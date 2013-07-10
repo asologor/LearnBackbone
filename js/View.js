@@ -1,23 +1,16 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Андрей
- * Date: 09.07.13
- * Time: 12:16
- * To change this template use File | Settings | File Templates.
- */
-define( [ 'jquery', 'backbone', 'underscore', 'InfoView' ], function($, Backbone, _, InfoView){
+define( [ 'jquery', 'backbone', 'underscore' ], function($, Backbone, _){
     var View = Backbone.View.extend({
         tagName: 'li',
         className: 'item',
 
-        template: '#user',
+        template: _.template( $('#user').html() ),
 
         events: {
             'click': 'clicked'
         },
 
         initialize: function(){
-            this.template = _.template( $(this.template).html() );
+            this.html = this.template(this.model.toJSON());
             this.model.on('change', this.repaint, this);
         },
 
