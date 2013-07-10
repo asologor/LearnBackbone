@@ -1,55 +1,58 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Андрей
- * Date: 09.07.13
- * Time: 12:11
- * To change this template use File | Settings | File Templates.
- */
-define( ['jquery', 'backbone', 'underscore'], function($, Backbone, _){
-    var EditView = Backbone.View.extend({
-        tagName: 'form',
-        attributes: {'action': '#'},
+(function() {
+    var modules;
 
-        template: '#editInfo',
-        mod: {},
+    modules = ['backbone', 'underscore'];
 
-        events: {
-            'click #saveButton': 'saveClicked',
-            'click #closeButton': 'closeClicked'
-        },
-
-        saveClicked: function(){
-            this.mod.name = this.$('#name').val();
-            this.mod.lastName = this.$('#lastName').val();
-            this.mod.gender = this.$('#gender').val();
-            this.mod.age = this.$('#age').val();
-            this.mod.phoneNumber = this.$('#phoneNumber').val();
-            if( this.model.set(this.mod, {validate: true}) ){
-                this.$('ul').removeClass('editError');
-                this.model.trigger('saveClicked');
-                this.remove();
-            }else{
-                this.$('ul').addClass('editError');
-                var errors = this.model.validationError;
-                this.$('span').empty();
-                for(var el in errors){
-                    this.$('#'+el+'Span').text(errors[el]);
+    define(modules, function(Backbone, _) {
+        var EditView;
+        EditView = Backbone.View.extend({
+            tagName: 'form',
+            attributes: {
+                'action': '#'
+            },
+            template: '#editInfo',
+            mod: {},
+            events: {
+                'click #saveButton': 'saveClicked',
+                'click #closeButton': 'closeClicked'
+            },
+            saveClicked: function() {
+                var errors, key, value, _results;
+                this.mod.name = this.$('#name').val();
+                this.mod.lastName = this.$('#lastName').val();
+                this.mod.gender = this.$('#gender').val();
+                this.mod.age = this.$('#age').val();
+                this.mod.phoneNumber = this.$('#phoneNumber').val();
+                if (this.model.set(this.mod, {
+                    validate: true
+                })) {
+                    this.$('ul').removeClass('editError');
+                    this.model.trigger('saveClicked');
+                    return this.remove();
+                } else {
+                    this.$('ul').addClass('editError');
+                    errors = this.model.validationError;
+                    this.$('span').empty();
+                    _results = [];
+                    for (key in errors) {
+                        value = errors[key];
+                        _results.push(this.$("#" + key + "Span").text(value));
+                    }
+                    return _results;
                 }
+            },
+            closeClicked: function() {
+                this.model.trigger('itemClicked');
+                return this.remove();
+            },
+            render: function() {
+                var template;
+                template = _.template($(this.template).html());
+                this.$el.html(template(this.model.toJSON()));
+                return this;
             }
-        },
-
-        closeClicked: function(){
-            this.model.trigger('itemClicked');
-            this.remove();
-        },
-
-        render: function(){
-            var template = _.template( $(this.template).html() );
-            this.$el.html( template(this.model.toJSON()) );
-
-            return this;
-        }
+        });
+        return EditView;
     });
 
-    return EditView;
-});
+}).call(this);
