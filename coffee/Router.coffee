@@ -1,8 +1,7 @@
-modules = ['jquery', 'backbone', 'UsersCollection'
-           'UsersView', 'InfoView', 'EditView']
-
-define modules, ($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
-  Router = Backbone.Router.extend(
+define ['jquery', 'backbone', 'UsersCollection'
+        'UsersView', 'InfoView', 'EditView'],
+($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
+  class Router extends Backbone.Router
     routes:
       ''          :   'index'
       'info/:id'  :   'info'
@@ -16,10 +15,10 @@ define modules, ($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
       editView: null
 
 
-    initialize: (people) ->
+    constructor: (people) ->
+      super
       @usersCollection = new UsersCollection people
       Backbone.history.start()
-  
       @listenTo @usersCollection, 'itemClicked', @itemClicked
       @listenTo @usersCollection, 'editClicked', @editClicked
 
@@ -42,7 +41,7 @@ define modules, ($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
       unless @Views.usersView
         @index()
       model = @usersCollection.at id
-      @Views.infoView = new InfoView {model: model}
+      @Views.infoView = new InfoView model: model
       $('#information').html @Views.infoView.render().el
 
     edit: (id)->
@@ -50,7 +49,7 @@ define modules, ($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
         @index()
       @Views.infoView.remove()
       model = @usersCollection.at id
-      @Views.editView = new EditView {model: model}
+      @Views.editView = new EditView model: model
       $('#information').html @Views.editView.render().el
-  )
-  return Router
+
+  Router

@@ -1,7 +1,5 @@
-modules = [ 'jquery', 'backbone', 'underscore', 'EditView' ]
-
-define modules, ($, Backbone, _) ->
-  InfoView = Backbone.View.extend(
+define ['jquery', 'backbone', 'underscore'], ($, Backbone, _) ->
+  class InfoView extends Backbone.View
     tagName: 'ul'
     className: 'info'
     template: _.template $('#infoTempl').html()
@@ -19,7 +17,6 @@ define modules, ($, Backbone, _) ->
 
     render: ->
       @$el.html @template @model.toJSON()
-      return this
-  )
+      @
 
-  return InfoView
+  InfoView

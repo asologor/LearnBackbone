@@ -1,15 +1,12 @@
-require.config(
+require.config
   shim:
     'backbone':
       deps: [ 'underscore', 'jquery' ]
       exports: 'Backbone'
     'underscore':
       exports: '_'
-);
 
-modules = ['Router']
-
-require modules, (Router) ->
+require ['Router'], (Router) ->
   users = [
     name: 'Вася'
     lastName: 'Петров'

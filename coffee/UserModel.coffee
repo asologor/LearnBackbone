@@ -1,5 +1,5 @@
 define ['backbone'], (Backbone) ->
-  UserModel = Backbone.Model.extend(
+  class UserModel extends Backbone.Model
     defaults:
       name: '-',
       lastName: '-',
@@ -26,7 +26,6 @@ define ['backbone'], (Backbone) ->
         errors.phoneNumber = 'Invalid phone number!'
 
       unless _.isEmpty(errors)
-        return errors
-  )
+        errors
 
-  return UserModel
+  UserModel

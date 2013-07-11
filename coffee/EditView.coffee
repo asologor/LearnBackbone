@@ -1,11 +1,9 @@
-modules = ['backbone', 'underscore']
-
-define modules, (Backbone, _) ->
-  EditView = Backbone.View.extend(
+define ['backbone', 'underscore'], (Backbone, _) ->
+  class EditView extends Backbone.View
     tagName: 'form'
-    attributes: {'action': '#'}
+    attributes: 'action': '#'
 
-    template: '#editInfo'
+    template: _.template $('#editInfo').html()
     mod: {}
 
     events:
@@ -18,7 +16,7 @@ define modules, (Backbone, _) ->
       @mod.gender = @$('#gender').val()
       @mod.age = @$('#age').val()
       @mod.phoneNumber = @$('#phoneNumber').val()
-      if @model.set(@mod, {validate: true})
+      if @model.set @mod, {validate: true}
         @$('ul').removeClass 'editError'
         @model.trigger 'saveClicked'
         @remove()
@@ -34,10 +32,7 @@ define modules, (Backbone, _) ->
       @remove()
 
     render: ->
-      template = _.template $(@template).html()
       @$el.html template @model.toJSON()
+      @
 
-      return this
-  )
-
-  return EditView
+  EditView

@@ -1,7 +1,5 @@
-modules = [ 'jquery', 'backbone', 'underscore' ]
-
-define modules, ($, Backbone, _) ->
-  View = Backbone.View.extend(
+define ['jquery', 'backbone', 'underscore'], ($, Backbone, _) ->
+  class View extends Backbone.View
     tagName: 'li'
     className: 'item'
 
@@ -10,7 +8,8 @@ define modules, ($, Backbone, _) ->
     events:
       'click': 'clicked'
 
-    initialize: ->
+    constructor: ->
+      super
       @html = @template(@model.toJSON())
       @model.on('change', @repaint, this)
 
@@ -24,7 +23,6 @@ define modules, ($, Backbone, _) ->
 
     render: ->
       @$el.html( @template(@model.toJSON()) )
-      return @
-  )
+      @
 
-  return View
+  View

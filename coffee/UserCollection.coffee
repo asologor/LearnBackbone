@@ -1,7 +1,5 @@
-modules = ['backbone', 'UserModel']
-
-define modules , (Backbone, UserModel) ->
-  UsersCollection = Backbone.Collection.extend(
+define ['backbone', 'UserModel'] , (Backbone, UserModel) ->
+  class UsersCollection extends Backbone.Collection
     model: UserModel
-  )
-  return UsersCollection
+
+  UsersCollection

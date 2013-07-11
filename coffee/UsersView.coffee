@@ -1,7 +1,5 @@
-modules = [ 'backbone', 'underscore', 'View' ]
-
-define modules, (Backbone, _, View) ->
-  UsersView = Backbone.View.extend(
+define ['backbone', 'underscore', 'View'], (Backbone, _, View) ->
+  class UsersView extends Backbone.View
     tagName: 'ol'
   
     deselect: ->
@@ -11,8 +9,7 @@ define modules, (Backbone, _, View) ->
       @collection.each( (user) ->
         userView = new View {model: user}
         @$el.append userView.render().el
-      , this)
-      return this
-  )
+      , @)
+      @
   
-  return UsersView
+  UsersView
