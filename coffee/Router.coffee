@@ -1,5 +1,5 @@
 define ['jquery', 'backbone', 'UsersCollection'
-        'UsersView', 'InfoView', 'EditView'],
+        'UsersView', 'InfoView', '../js/EditView'],
 ($, Backbone, UsersCollection, UsersView, InfoView, EditView) ->
   class Router extends Backbone.Router
     routes:

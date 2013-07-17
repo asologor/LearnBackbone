@@ -3,7 +3,7 @@
   require.config({
     shim: {
       'backbone': {
-        deps: ['underscore', 'jquery'],
+        deps: ['underscore', 'jquery', 'backbone-validation'],
         exports: 'Backbone'
       },
       'underscore': {
@@ -12,7 +12,7 @@
     }
   });
 
-  require(['Router', 'underscore', 'backbone', 'backbone-validation-amd'], function(Router, _, Backbone, bv) {
+  require(['Router'], function(Router) {
     var users;
     users = [
       {

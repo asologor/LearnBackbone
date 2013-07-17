@@ -1,12 +1,12 @@
 require.config
   shim:
     'backbone':
-      deps: [ 'underscore', 'jquery' ]
+      deps: [ 'underscore', 'jquery']
       exports: 'Backbone'
     'underscore':
       exports: '_'
 
-require ['Router'], (Router) ->
+require ['Router', 'underscore', 'backbone', 'backbone-validation-amd'], (Router, _, Backbone, bv) ->
   users = [
     name: 'Вася'
     lastName: 'Петров'
