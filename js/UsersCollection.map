@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "UserCollection.js",
+  "sourceRoot": "..\\coffee",
+  "sources": [
+    "UserCollection.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA;oSAAA;;CAAA,CAAA,CAAmC,GAAnC,EAAmC,CAAC,CAA7B,CAAA;CACL,OAAA,aAAA;CAAA,GAAM;CACJ;;;;;CAAA;;CAAA,EAAO,EAAP,IAAA;;CAAA;;CAD4B,OAAQ;CADL,UAIjC;CAJF,EAAmC;CAAnC"
+}

@@ -7,25 +7,27 @@ define ['backbone'], (Backbone) ->
       age: 0,
       phoneNumber: '00000'
 
-    validate: (attrs) ->
-      errors = {}
-      if attrs.name.length < 2
-        errors.name = 'You must enter a name!'
+    validation:
+      name:
+        required: true
+        minLength: 2
+        msg: 'You must enter a name!'
 
-      if attrs.lastName.length < 2
-        errors.lastName = 'You must enter a last name!'
+      lastName:
+        required: true
+        minLength: 2
+        msg: 'You must enter a last name!'
 
-      if not isFinite(attrs.age) or attrs.age.length < 1
-        errors.age = 'You must enter an age!'
+      age:
+        [
+          required: true
+          msg: 'You must enter an age!'
+        ,
+          min: 1
+          msg: 'Age must be greater than 0!'
+        ]
 
-      if parseInt(attrs.age) <= 0
-        errors.age = 'Age must be greater than 0!'
-
-      reg = new RegExp "^\\+?[0-9]{10,14}$"
-      unless reg.test(attrs.phoneNumber)
-        errors.phoneNumber = 'Invalid phone number!'
-
-      unless _.isEmpty(errors)
-        errors
-
-  UserModel
+      phoneNumber:
+        required: true
+        pattern: "^\\+?[0-9]{10,14}$"
+        msg: 'Invalid phone number!'
